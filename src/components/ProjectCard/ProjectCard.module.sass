@@ -1,0 +1,31 @@
+.container
+  position: relative
+  width: 100%
+  display: flex
+  flex-direction: column
+  color: white
+  background-repeat: no-repeat !important
+  background-size: cover !important
+  height: 620px
+  &:not(:last-child)
+    margin-bottom: 30px
+
+.data
+  z-index: 10
+  font-size: .8rem
+  margin: 28px 28px 0
+  opacity: .7
+  text-transform: uppercase
+  letter-spacing: .4em
+  margin-bottom: 8px
+
+.title
+  font-size: 1.75rem
+  line-height: 2.1875rem
+  z-index: 10
+  margin: 3px 28px 0
+
+@media (min-width: 660px)
+  .container
+    width: calc(50% - 30px)
+    margin: 15px !important

@@ -1,12 +1,10 @@
 import type {NextPage} from 'next'
-import Home from "../containers/Home";
+import Home from "../containers/Home/Home";
 
 
 const RootApp: NextPage = () => {
    return (
-      <div>
-         <Home/>
-      </div>
+      <Home/>
    )
 }
 

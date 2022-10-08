@@ -1,0 +1,75 @@
+@use 'src/styles/colors'
+
+.container
+  width: 100%
+  position: relative
+  padding-top: 295px
+  margin-bottom: 80px
+
+.bg_img
+  width: 100%
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 1
+  max-height: 460px
+  & img
+    right: 0
+    object-fit: contain
+    width: 100%
+    max-height: 460px
+
+.wrapper
+  z-index: 5
+  width: 100%
+  margin-top: 15px
+  padding: 0 14px
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+
+.name
+  z-index: 5
+  text-transform: uppercase
+  color: colors.$mainGray
+  font-size: .75rem
+  letter-spacing: 8px
+  margin: 0 0 12px
+  font-family: "Helvetica Light", sans-serif
+
+.title
+  z-index: 5
+  margin: 0
+  font-family: "Helvetica Extra Bold", sans-serif
+
+.text
+  z-index: 1
+  font-size: 1.1rem
+  line-height: 150%
+  font-family: "Helvetica Medium", sans-serif
+  color: colors.$mainGray
+
+.link_section
+  display: flex
+  flex-direction: row
+  font-size: 1.1rem
+  color: colors.$mainGray
+  & a
+    color: black
+    font-family: "Helvetica Bold", sans-serif
+
+.projects_list
+  width: 100%
+  margin-top: 60px
+  & > h5
+    margin: 0
+    font-size: .875rem
+    line-height: 1.25rem
+    letter-spacing: .4em
+    color: colors.$mainGray
+    text-transform: uppercase
+  & > h1
+    margin: 10px 0 0
+    font-size: 2.125rem
+    line-height: 2.5rem
+    font-family: "Helvetica Extra Bold", sans-serif

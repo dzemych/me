@@ -1,3 +1,52 @@
+@use 'src/styles/colors'
+
+
 .container
+  position: fixed
+  top: 0
+  z-index: 50
+  width: 100%
   display: flex
   flex-direction: row
+  justify-content: space-between
+  align-items: center
+  padding: 20px 14px
+  background: rgba(255, 255, 255, .9)
+  transition: all 200ms cubic-bezier(.3,0,.5,1)
+  transition-duration: 100ms !important
+  transition-delay: 400ms !important
+
+.curtain
+  color: colors.$mainGray !important
+  fill: colors.$mainGray !important
+  background: none
+  transition: all 100ms cubic-bezier(.3,0,.5,1)
+
+.left, .right
+  z-index: 100
+  display: flex
+  flex-direction: row
+  align-items: center
+
+.left
+  height: 100%
+
+.right
+  & span
+    font-size: .8rem
+    text-transform: uppercase
+    font-family: "Helvetica Extra Bold", sans-serif
+    letter-spacing: .2em
+
+.logo
+  height: 97%
+  width: fit-content
+  object-fit: contain
+  margin-right: 12px
+
+.titleSvg
+  height: 75%
+
+.menu_icon
+  font-size: 25px
+  margin-left: 15px
