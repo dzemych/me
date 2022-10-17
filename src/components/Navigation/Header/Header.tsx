@@ -4,7 +4,9 @@ import Logo from '@images/logo.svg'
 import TitleSvg from '@images/title.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import Curtain from '@components/Curtain/Curtain'
+import Curtain from '@components/Navigation/Curtain/Curtain'
+import { useRouter } from 'next/router'
+import NavMenu from '@components/Navigation/Curtain/NavMenu'
 
 
 interface IProps {
@@ -12,6 +14,8 @@ interface IProps {
 }
 
 const Header: FC<IProps> = ({ headerHeight}) => {
+   const router = useRouter()
+
    const cls = [classes.container]
 
    const [curtain, setCurtain] = useState(false)
@@ -20,6 +24,7 @@ const Header: FC<IProps> = ({ headerHeight}) => {
    if (curtain)
       cls.push(classes.curtain)
 
+   // Change menu text on close and open curtain
    useEffect(() => {
       const timeout = curtain ? 410 : 400
 
@@ -28,12 +33,15 @@ const Header: FC<IProps> = ({ headerHeight}) => {
       }, timeout)
    }, [curtain])
 
+   // Lock body scroll if curtain is open
    useEffect(() => {
       if (curtain)
          document.body.style.overflow = 'hidden'
 
       if (!curtain)
-         document.body.style.overflow = 'auto'
+         setTimeout(() => {
+            document.body.style.overflow = 'auto'
+         }, 400)
    }, [curtain])
 
    return (
@@ -41,9 +49,11 @@ const Header: FC<IProps> = ({ headerHeight}) => {
          className={cls.join(' ')}
          style={{height: headerHeight}}
       >
-         <Curtain isOpen={curtain}/>
+         <Curtain isOpen={curtain} close={() => setCurtain(false)}>
+            <NavMenu close={() => setCurtain(false)}/>
+         </Curtain>
 
-         <div className={classes.left}>
+         <div className={classes.left} onClick={() => router.push('/')}>
             <Logo className={classes.logo}/>
             <TitleSvg className={classes.titleSvg}/>
          </div>

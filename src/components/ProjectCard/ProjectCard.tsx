@@ -31,6 +31,7 @@ const ProjectCard: FC<IProps> = (
 
    return (
       <div
+         data-animate={'animate--me'}
          className={classes.container}
          style={{background: `url("${bgImg}")`}}
          onClick={() => router.push('/project/ ' + slug)}

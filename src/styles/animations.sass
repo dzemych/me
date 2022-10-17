@@ -1,0 +1,104 @@
+[data-animate='animation-1']
+  animation-duration: .6s
+  animation-name: animation-1
+
+[data-animate='animation-2']
+  animation-duration: .8s
+  animation-name: animation-2
+
+[data-animate='animation-3']
+  animation-duration: 1s
+  animation-name: animation-3
+
+[data-animate='animation-4']
+  animation-duration: 1.2s
+  animation-name: animation-4
+
+[data-animate='animation-5']
+  animation-duration: 1.4s
+  animation-name: animation-5
+
+[data-animate='animation-6']
+  animation-duration: 1.4s
+  animation-name: animation-6
+
+[data-animate='animate--init']
+  animation-name: fadeInView
+  animation-duration: .7s
+  animation-fill-mode: both
+  animation-timing-function: cubic-bezier(.3,0,.5,1)
+  opacity: 0
+
+[data-animate='animate--me']
+  opacity: 0
+
+
+@keyframes animation-1
+  0%, 66.666666667%
+    opacity: 0
+    transform: translate3d(0, 20px, 0)
+
+  100%
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+
+@keyframes animation-2
+  0%, 75%
+    opacity: 0
+    transform: translate3d(0, 20px, 0)
+
+  100%
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+
+@keyframes animation-3
+  0%, 80%
+    opacity: 0
+    transform: translate3d(0, 20px, 0)
+
+  100%
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+
+@keyframes animation-4
+  0%, 83.333333333%
+    opacity: 0
+    transform: translate3d(0, 20px, 0)
+
+  100%
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+
+@keyframes animation-5
+  0%, 85.714285714%
+    opacity: 0
+    transform: translate3d(0, 20px, 0)
+
+  100%
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+
+@keyframes animation-6
+  0%, 87.500000000%
+    opacity: 0
+    transform: translate3d(0, 20px, 0)
+
+  100%
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+    
+@keyframes fadeInView 
+  0%
+    transform: translate3d(0, 30px, 0)
+    opacity: 0
+    //visibility: initial
+
+  100%
+    transform: translate3d(0, 0, 0)
+    opacity: 1
+    //visibility: initial

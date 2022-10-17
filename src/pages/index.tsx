@@ -3,9 +3,7 @@ import Home from "../containers/Home/Home";
 
 
 const RootApp: NextPage = () => {
-   return (
-      <Home/>
-   )
+   return <Home/>
 }
 
 export default RootApp
