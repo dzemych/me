@@ -6,15 +6,14 @@ import classes from '@components/Navigation/Curtain/Curtain.module.sass'
 interface ILink {
    text: string,
    to: string,
-   blank?: boolean
+   blank?: boolean,
 }
 
 interface IProps {
-   close: () => void
+   changePageCurtainAnimation: () => void
 }
 
-const NavMenu: FC<IProps> = ({close}) => {
-
+const NavMenu: FC<IProps> = ({ changePageCurtainAnimation }) => {
    const links: ILink[] = [
       { text: 'Project', to: '/' },
       { text: 'About me', to: '/about' },
@@ -26,9 +25,8 @@ const NavMenu: FC<IProps> = ({close}) => {
 
    const linkClick = (e: React.MouseEvent<Element, MouseEvent>, href: string) => {
       e.preventDefault()
-
+      changePageCurtainAnimation()
       router.push(href)
-      close()
    }
 
    const renderLink = (el: ILink, idx: number): ReactNode => {
@@ -62,7 +60,7 @@ const NavMenu: FC<IProps> = ({close}) => {
    }
 
    return (
-      <div className={classes.wrapper}>
+      <div className={classes.navMenu}>
          <div className={classes.middle_container}>
             <h5 className={classes.title}>
                Menu

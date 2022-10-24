@@ -4,12 +4,28 @@ import 'src/styles/globals.sass'
 import 'src/styles/fonts.sass'
 import 'src/styles/colors.sass'
 import 'src/styles/animations.sass'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import Loading from '../containers/Preload/Loading'
+import React from 'react'
+import { useRouter } from 'next/router'
+import PageLoading from '@components/Navigation/Curtain/PageLoading'
 
+
+export const PageContext = React.createContext({
+   newPage: false,
+   isCurtain: false,
+   headerType: 'main',
+   setHeaderType: (arg: string) => {},
+   setIsCurtain: (arg: boolean) => {}
+})
 
 function MyApp({Component, pageProps}: AppProps) {
+
+   const router = useRouter()
+
+   const [newPage, setNewPage] = useState(false)
+   const [isCurtain, setIsCurtain] = useState(false)
+   const [headerType, setHeaderType] = useState('main')
 
    const checkElements = (elements: any[]) => {
       elements.forEach((el, i) => {
@@ -46,15 +62,41 @@ function MyApp({Component, pageProps}: AppProps) {
 
    })
 
-   // Delete preloader
-   // useEffect(() => {
-      // console.log('')
-      // document.querySelector('#preloader')?.remove()
-   // }, [])
+   // Set new page
+   useEffect(() => {
+      const startHandler = async () => {
+         setNewPage(true)
+         // setHeaderType('menu')
+      }
+
+      const completeHandler = (url: string) => {
+         if (url === router.asPath)
+            setTimeout(() => {
+               setNewPage(false)
+            }, 1500)
+      }
+
+      router.events.on('routeChangeStart', startHandler)
+      router.events.on('routeChangeComplete', completeHandler)
+      router.events.on('routeChangeError', completeHandler)
+
+      return () => {
+         router.events.off('routeChangeStart', startHandler)
+         router.events.off('routeChangeComplete', completeHandler)
+         router.events.off('routeChangeError', completeHandler)
+      }
+   })
 
    return (
-      <>
-         <Loading/>
+      // @ts-ignore
+      <PageContext.Provider value={{
+         newPage,
+         isCurtain,
+         headerType,
+         setIsCurtain,
+         setHeaderType
+      }}>
+         <PageLoading isOpen={newPage && !isCurtain} />
 
          <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -63,7 +105,7 @@ function MyApp({Component, pageProps}: AppProps) {
          <MainLayout>
             <Component {...pageProps} />
          </MainLayout>
-      </>
+      </PageContext.Provider>
    )
 }
 
