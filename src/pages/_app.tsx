@@ -9,6 +9,7 @@ import Head from 'next/head'
 import React from 'react'
 import { useRouter } from 'next/router'
 import PageLoading from '@components/Navigation/Curtain/PageLoading'
+import { AnimatePresence } from 'framer-motion'
 
 
 export const PageContext = React.createContext({
@@ -89,23 +90,34 @@ function MyApp({Component, pageProps}: AppProps) {
 
    return (
       // @ts-ignore
-      <PageContext.Provider value={{
-         newPage,
-         isCurtain,
-         headerType,
-         setIsCurtain,
-         setHeaderType
-      }}>
-         <PageLoading isOpen={newPage && !isCurtain} />
-
+      // <PageContext.Provider value={{
+      //    newPage,
+      //    isCurtain,
+      //    headerType,
+      //    setIsCurtain,
+      //    setHeaderType
+      // }}>
+      //    <PageLoading isOpen={newPage && !isCurtain} />
+      //
+      //    <Head>
+      //       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      //    </Head>
+      //
+      //    <MainLayout>
+      //       <Component {...pageProps} />
+      //    </MainLayout>
+      // </PageContext.Provider>
+      <>
          <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
          </Head>
 
-         <MainLayout>
-            <Component {...pageProps} />
-         </MainLayout>
-      </PageContext.Provider>
+         <AnimatePresence>
+            <MainLayout>
+               <Component {...pageProps} />
+            </MainLayout>
+         </AnimatePresence>
+      </>
    )
 }
 
